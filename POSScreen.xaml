@@ -1,0 +1,67 @@
+﻿<Window x:Class="DCC_POS.POSScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DCC_POS"
+        mc:Ignorable="d"
+        Title="POSScreen" Height="600" Width="900">
+    <Grid>
+        <!-- Define Rows: 1 for Top Bar, 1 for Content, 1 for Footer -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <!-- Top Bar -->
+            <RowDefinition Height="*"/>
+            <!-- Main Content (Menu and Order Section) -->
+            <RowDefinition Height="60"/>
+            <!-- Footer -->
+        </Grid.RowDefinitions>
+
+        <!-- Top Bar -->
+        <Grid Grid.Row="0" Background="#4CAF50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <!-- Store Name -->
+            <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="White" Text="DCC Coffee" />
+            <!-- User Info (Logged-in User) -->
+            <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Foreground="White" Text="Logged in: John Doe" />
+            <!-- Logout Button -->
+            <Button Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10" Content="Logout" Width="80" Click="LogoutButton_Click"/>
+        </Grid>
+
+        <!-- Main Content (Left Side - Menu) -->
+        <Grid Grid.Row="1" Margin="20,10,20,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <!-- Menu List -->
+            <ListBox Name="MenuList" Width="250" Height="400" Margin="10" Background="LightGray">
+                <ListBoxItem Content="Coffee 1 - ₱100" />
+                <ListBoxItem Content="Coffee 2 - ₱150" />
+                <ListBoxItem Content="Coffee 3 - ₱120" />
+                <!-- Add other menu items here -->
+            </ListBox>
+
+            <!-- Order Section -->
+            <StackPanel Grid.Column="1" Background="White" Height="400" Margin="10">
+                <TextBlock FontSize="18" FontWeight="Bold" Margin="0,0,0,10" Text="Current Order"/>
+                <ListBox Name="OrderList" Height="250" Margin="0,0,0,10">
+                    <!-- Order items will be added here -->
+                </ListBox>
+                <TextBlock FontSize="16" FontWeight="Bold" Text="Total: ₱0.00" Name="TotalPrice" Margin="0,10,0,10"/>
+                <Button Content="Checkout" Width="150" Height="40" HorizontalAlignment="Center" Click="CheckoutButton_Click"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Footer Section -->
+        <Grid Grid.Row="2" Background="#4CAF50">
+            <Button Content="Add Item" Width="150" Height="40" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0" Click="AddItemButton_Click"/>
+            <Button Content="Apply Discount" Width="150" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Click="ApplyDiscountButton_Click"/>
+            <Button Content="Cancel Order" Width="150" Height="40" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0" Click="CancelOrderButton_Click"/>
+        </Grid>
+    </Grid>
+</Window>
