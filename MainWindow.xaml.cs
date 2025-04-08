@@ -23,6 +23,9 @@ namespace DCC_POS
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Order screen coming soon!");
+            POSScreen secondScreen = new POSScreen();
+            secondScreen.Show();
+            this.Close();
         }
 
         // For the TextBox GotFocus
